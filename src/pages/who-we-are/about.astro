@@ -1,0 +1,256 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Container from "../../components/Container.astro";
+import Icon from "../../components/Icon.astro";
+
+const stats = [
+    {
+        value: "42B",
+        label: "SAR Market",
+        description: "Annual construction supply chain in KSA"
+    },
+    {
+        value: "2022",
+        label: "Founded",
+        description: "Started our journey in April"
+    },
+    {
+        value: "1000+",
+        label: "SMEs Served",
+        description: "Supporting business growth"
+    },
+    {
+        value: "24/7",
+        label: "Support",
+        description: "Always here to help"
+    }
+];
+
+const values = [
+    {
+        title: "Flexibility",
+        description: "Choose from a wide range of suppliers with flexible payment options that match your business needs and flows.",
+        icon: "flexibility"
+    },
+    {
+        title: "Simplicity",
+        description: "All your needs are managed through our digital platform seamlessly, saving you time and effort compared to traditional procedures.",
+        icon: "simplicity"
+    },
+    {
+        title: "Speed",
+        description: "We provide you with the ability to obtain materials quickly and easily, helping to complete projects more efficiently without delays.",
+        icon: "speed"
+    },
+    {
+        title: "Trust",
+        description: "Our credit assessment is based on objective risk analysis, not just relationships, ensuring fair opportunities for all businesses.",
+        icon: "trust"
+    }
+];
+
+const solutions = [
+    {
+        title: "Supply Chain Revolution",
+        description: "Streamlining credit management through advanced tools and a vast network of suppliers.",
+        icon: "chart-network"
+    },
+    {
+        title: "Data-Driven Decisions",
+        description: "Analyzing key buyer data—financials, legal status, and market reputation—for effective credit assessment.",
+        icon: "data"
+    },
+    {
+        title: "Growth Enabler",
+        description: "Supporting SMEs with flexible credit terms while ensuring consistent cash flow for suppliers.",
+        icon: "trending-up"
+    }
+];
+
+const team = [
+    {
+        role: "Financial Technology",
+        description: "Expert fintech innovators building next-gen B2B solutions"
+    },
+    {
+        role: "Banking",
+        description: "Seasoned banking professionals ensuring robust financial operations"
+    },
+    {
+        role: "Construction",
+        description: "Industry veterans who understand construction business needs"
+    }
+];
+---
+
+<Layout title="About Us | BuildNow">
+    <main class="relative">
+        <!-- Hero Section -->
+        <div class="relative overflow-hidden">
+            <Container>
+                <div class="relative pt-32 lg:pt-36 pb-20">
+                    <div class="mx-auto max-w-3xl text-center">
+                        <h1 class="text-5xl font-bold text-gray-900 dark:text-white md:text-6xl lg:text-7xl">
+                            Building Together,<br/>for a Better Future
+                        </h1>
+                        <p class="mt-8 text-xl text-gray-600 dark:text-gray-300">
+                            Started in April 2022 with one big goal: to make life easier for small and medium-sized 
+                            businesses in the construction world through innovative fintech solutions.
+                        </p>
+                    </div>
+                </div>
+            </Container>
+            <div class="absolute inset-0 -z-10 h-full w-full bg-white dark:bg-gray-900">
+                <div class="absolute top-0 left-0 right-0 h-96 bg-gradient-to-br from-primary/20 via-transparent to-transparent dark:from-primary/10 animate-gradient"></div>
+            </div>
+        </div>
+
+        <!-- Vision & Mission Section with Enhanced Design -->
+        <Container>
+            <div class="py-20">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="relative p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden group">
+                        <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent dark:from-primary/10"></div>
+                        <div class="relative">
+                            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Our Vision</h2>
+                            <p class="text-lg text-gray-600 dark:text-gray-300">
+                                A B2B buying and selling experience with no limits and no complications, just as it should be.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="relative p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden group">
+                        <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent dark:from-primary/10"></div>
+                        <div class="relative">
+                            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Our Mission</h2>
+                            <p class="text-lg text-gray-600 dark:text-gray-300">
+                                Complete digitization of transactions between businesses, separating financing from the supply 
+                                process in a professional and efficient manner.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </Container>
+
+        <!-- Market Impact Section -->
+        <div class="bg-gray-50 dark:bg-gray-800/50">
+            <Container>
+                <div class="py-20">
+                    <div class="max-w-3xl mx-auto text-center mb-16">
+                        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">
+                            Impact on Small and Medium Enterprises
+                        </h2>
+                        <p class="text-lg text-gray-600 dark:text-gray-300">
+                            Goods worth 42 billion SAR are traded annually within the construction supply chain in Saudi Arabia alone. 
+                            We're here to transform how businesses access and manage credit.
+                        </p>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        {solutions.map(solution => (
+                            <div class="relative p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-xl transform hover:scale-105 transition-all duration-300">
+                                <div class="flex items-center mb-4">
+                                    <div class="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 dark:bg-primary/20">
+                                        <Icon name={solution.icon} class="w-6 h-6 text-primary" />
+                                    </div>
+                                    <h3 class="ml-4 text-xl font-semibold text-gray-900 dark:text-white">{solution.title}</h3>
+                                </div>
+                                <p class="text-gray-600 dark:text-gray-300">{solution.description}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </Container>
+        </div>
+
+        <!-- Stats Section with Enhanced Animation -->
+        <Container>
+            <div class="py-20">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                    {stats.map(stat => (
+                        <div class="text-center transform hover:scale-105 transition-all duration-300 p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-xl">
+                            <div class="text-4xl font-bold text-primary mb-2">{stat.value}</div>
+                            <div class="text-lg font-semibold text-gray-900 dark:text-white mb-1">{stat.label}</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">{stat.description}</div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </Container>
+
+        <!-- Team Expertise Section -->
+        <div class="bg-gray-50 dark:bg-gray-800/50">
+            <Container>
+                <div class="py-20">
+                    <div class="max-w-3xl mx-auto text-center mb-16">
+                        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">
+                            Expert Team
+                        </h2>
+                        <p class="text-lg text-gray-600 dark:text-gray-300">
+                            Backed by a team of passionate experts across multiple disciplines
+                        </p>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        {team.map(member => (
+                            <div class="relative p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-xl text-center group hover:bg-primary/5 dark:hover:bg-primary/10 transition-colors duration-300">
+                                <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">{member.role}</h3>
+                                <p class="text-gray-600 dark:text-gray-300">{member.description}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </Container>
+        </div>
+
+        <!-- Why BuildNow Section -->
+        <Container>
+            <div class="py-20">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white text-center mb-4">
+                    Why BuildNow?
+                </h2>
+                <p class="text-center text-gray-600 dark:text-gray-300 mb-12 max-w-2xl mx-auto">
+                    Key benefits of partnering with us
+                </p>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    {values.map(value => (
+                        <div class="relative p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-xl transform hover:scale-105 transition-all duration-300">
+                            <div class="flex items-center mb-4">
+                                <div class="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 dark:bg-primary/20">
+                                    <Icon name={value.icon} class="w-6 h-6 text-primary" />
+                                </div>
+                                <h3 class="ml-4 text-xl font-semibold text-gray-900 dark:text-white">{value.title}</h3>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300">{value.description}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </Container>
+
+        <!-- Enhanced CTA Section -->
+        <Container>
+            <div class="py-20">
+                <div class="relative rounded-2xl overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-r from-primary via-primary/90 to-primary/80"></div>
+                    <div class="absolute inset-0 bg-[url('/images/pattern.svg')] opacity-10"></div>
+                    <div class="relative p-8 sm:p-12">
+                        <div class="max-w-3xl mx-auto text-center">
+                            <h2 class="text-3xl font-bold text-white mb-6">Join Our Journey</h2>
+                            <p class="text-xl text-white/90 mb-8">
+                                Whether you're an expert or just starting your career, we're looking for ambitious talents 
+                                to help revolutionize B2B finance.
+                            </p>
+                            <div class="flex flex-wrap justify-center gap-4">
+                                <a href="/careers" class="inline-flex h-11 items-center justify-center px-8 bg-white rounded-full hover:bg-white/90 transition">
+                                    <span class="text-base font-semibold text-primary">Explore Opportunities</span>
+                                </a>
+                                <a href="/contact" class="inline-flex h-11 items-center justify-center px-8 border border-white rounded-full hover:bg-white/10 transition">
+                                    <span class="text-base font-semibold text-white">Contact Us</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </Container>
+    </main>
+</Layout>

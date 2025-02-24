@@ -1,67 +1,160 @@
 ---
 import Container from "./Container.astro";
-const links = [
+import Icon from "./Icon.astro";
+
+const navigationItems = [
     {
-        to: "/#features",
-        label: "Features",
+        label: "For Businesses",
+        items: [
+            {
+                label: "Credit Solutions",
+                to: "/products/consumers/credit-solutions",
+                description: "Flexible financing options up to 5M SAR",
+                icon: "secure-payment"
+            },
+            {
+                label: "Import to Saudi",
+                to: "/products/businesses/import-to-saudi",
+                description: "Access global markets with flexible payment terms",
+                icon: "globe"
+            }
+        ]
     },
     {
-        to: "/#solution",
-        label: "Solution",
+        label: "For Suppliers",
+        items: [
+            {
+                label: "BNPL Button",
+                to: "/products/suppliers/bnpl-button",
+                description: "Offer flexible payment terms to your customers",
+                icon: "payment-options"
+            },
+            {
+                label: "Export to Saudi",
+                to: "/products/suppliers/export-to-saudi",
+                description: "Expand your reach to the Saudi market",
+                icon: "arrows-exchange"
+            }
+        ]
     },
     {
-        to: "/#reviews",
-        label: "Reviews",
-    },
-    {
-        to: "https://github.com/luasenvy/nextjs-astro-theme",
-        label: "NextJS Version",
-    },
+        label: "Other",
+        items: [
+            {
+                label: "About Us",
+                to: "/about",
+                description: "Learn more about our mission",
+                icon: "payment-integration"
+            },
+            {
+                label: "Blog",
+                to: "/blog",
+                description: "Industry insights and updates",
+                icon: "checkmark"
+            }
+        ]
+    }
 ];
 ---
 
 <header>
-    <nav id="nav" class="absolute group z-10 w-full border-b border-black/5 dark:border-white/5 lg:border-transparent">
+    <nav id="nav" class="fixed top-0 inset-x-0 z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-lg border-b border-gray-100 dark:border-gray-800">
         <Container>
-            <div class="relative flex flex-wrap items-center justify-between gap-6 py-3 md:gap-0 md:py-4">
-                <div class="relative z-20 flex w-full justify-between md:px-0 lg:w-fit">
-                    <a href="/#home" aria-label="logo" class="flex items-center space-x-2">
-                        <div aria-hidden="true" class="flex space-x-1">
-                            <div class="size-4 rounded-full bg-gray-900 dark:bg-white"></div>
-                            <div class="h-6 w-2 bg-primary"></div>
-                        </div>
-                        <span class="text-2xl font-bold text-gray-900 dark:text-white">Astrolus</span>
-                    </a>
+            <div class="flex items-center justify-between h-20">
+                <a href="/" aria-label="logo" class="flex items-center space-x-3 hover:opacity-90 transition-opacity">
+                    <img src="/images/logo.png" alt="Buildnow Logo" class="h-16 w-auto" />
+                    <span class="text-3xl font-bold text-primary">
+                        Buildnow
+                    </span>
+                </a>
 
-                    <div class="relative flex max-h-10 items-center lg:hidden">
-                        <button aria-label="humburger" id="hamburger" class="relative -mr-6 p-6 active:scale-95 duration-300">
-                            <div aria-hidden="true" id="line" class="m-auto h-0.5 w-5 rounded bg-gray-950 transition duration-300 dark:bg-white origin-top group-data-[state=active]:rotate-45 group-data-[state=active]:translate-y-1.5"></div>
-                            <div aria-hidden="true" id="line2" class="m-auto mt-2 h-0.5 w-5 rounded bg-gray-950 transition duration-300 dark:bg-white origin-bottom group-data-[state=active]:-rotate-45 group-data-[state=active]:-translate-y-1"></div>
-                        </button>
-                    </div>
+                {/* Desktop Navigation */}
+                <div class="hidden lg:flex items-center gap-8">
+                    {navigationItems.map(category => (
+                        <div class="relative group">
+                            <button class="flex items-center gap-1 text-lg font-medium text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-white transition-colors">
+                                {category.label}
+                                <Icon name="chevron-down" class="w-5 h-5 transition-transform group-hover:rotate-180 text-gray-900 dark:text-white" />
+                            </button>
+                            
+                            {/* Dropdown Menu */}
+                            <div class="absolute left-0 top-full pt-4 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all">
+                                <div class="w-80 bg-white dark:bg-gray-800 rounded-xl shadow-xl ring-1 ring-gray-900/5 p-4">
+                                    <div class="space-y-3">
+                                        {category.items.map(item => (
+                                            <a 
+                                                href={item.to}
+                                                class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
+                                            >
+                                                <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-gray-400 flex items-center justify-center">
+                                                    <Icon name={item.icon} class="w-5 h-5 fill-current stroke-current text-yellow-500" />
+                                                </div>
+                                                <div>
+                                                    <div class="text-lg font-medium text-gray-900 dark:text-white">
+                                                        {item.label}
+                                                    </div>
+                                                    <p class="text-base text-gray-500 dark:text-gray-400 mt-1">
+                                                        {item.description}
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                    
+                    <button 
+                        onclick="openLeadForm()"
+                        class="flex h-12 items-center justify-center px-8 rounded-full bg-primary hover:bg-primary-dark text-white text-lg font-medium transition-colors shadow-lg shadow-primary/20 hover:shadow-primary/30"
+                    >
+                        Get Started
+                    </button>
                 </div>
-                <div id="navLayer" aria-hidden="true" class="fixed inset-0 z-10 h-screen w-screen origin-bottom scale-y-0 bg-white/70 backdrop-blur-2xl transition duration-500 group-data-[state=active]:origin-top group-data-[state=active]:scale-y-100 dark:bg-gray-950/70 lg:hidden"></div>
-                <div id="navlinks" class="invisible absolute top-full left-0 z-20 w-full origin-top-right translate-y-1 scale-90 flex-col flex-wrap justify-end gap-6 rounded-3xl border border-gray-100 bg-white p-8 opacity-0 shadow-2xl shadow-gray-600/10 transition-all duration-300 dark:border-gray-700 dark:bg-gray-800 dark:shadow-none lg:visible lg:relative lg:flex lg:w-fit lg:translate-y-0 lg:scale-100 lg:flex-row lg:items-center lg:gap-0 lg:border-none lg:bg-transparent lg:p-0 lg:opacity-100 lg:shadow-none lg:dark:bg-transparent group-data-[state=active]:visible group-data-[state=active]:scale-100 group-data-[state=active]:opacity-100 lg:group-data-[state=active]:translate-y-0">
-                    <div class="w-full text-gray-600 dark:text-gray-200 lg:w-auto lg:pr-4 lg:pt-0">
-                        <div id="links-group" class="flex flex-col gap-6 tracking-wide lg:flex-row lg:gap-0 lg:text-sm">
-                            {
-                                links.map((link) => (
-                                    <a href={link.to} class="hover:text-primary block transition dark:hover:text-white md:px-4">
-                                        <span>{link.label}</span>
-                                    </a>
-                                ))
-                            }
-                            <a href="https://tailtips.dev" target="_blank" class="flex gap-2 font-semibold text-gray-700 transition hover:text-primary dark:text-white dark:hover:text-white md:px-4">
-                                <span>TailwindCSS Tips</span>
-                                <span class="flex rounded-full border bg-primary/20 px-2 py-0.5 text-xs tracking-wider text-purple-700 dark:bg-white/10 dark:text-orange-300">New</span>
-                            </a>
-                        </div>
-                    </div>
 
-                    <div class="mt-12 lg:mt-0">
-                        <a href="/register" class="relative flex h-9 w-full items-center justify-center px-4 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max">
-                            <span class="relative text-sm font-semibold text-white"> Get Started</span>
-                        </a>
+                {/* Mobile Menu Button */}
+                <button 
+                    id="menuButton"
+                    class="p-2 rounded-lg lg:hidden"
+                    aria-label="Menu"
+                >
+                    <svg class="w-6 h-6 text-gray-600 dark:text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+
+            {/* Mobile Navigation */}
+            <div id="mobileMenu" class="hidden lg:hidden">
+                <div class="py-4">
+                    {navigationItems.map(category => (
+                        <div class="mb-4">
+                            <div class="px-4 py-2 text-sm font-semibold text-gray-900 dark:text-white">
+                                {category.label}
+                            </div>
+                            <div class="mt-1 space-y-1">
+                                {category.items.map(item => (
+                                    <a 
+                                        href={item.to}
+                                        class="flex items-center gap-3 px-4 py-2 text-base text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-white transition-colors"
+                                    >
+                                        <div class="flex-shrink-0 w-9 h-9 rounded-lg bg-gray-400 flex items-center justify-center">
+                                            <Icon name={item.icon} class="w-5 h-5 fill-current stroke-current text-yellow-500" />
+                                        </div>
+                                        {item.label}
+                                    </a>
+                                ))}
+                            </div>
+                        </div>
+                    ))}
+                    <div class="px-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+                        <button 
+                            onclick="openLeadForm()"
+                            class="w-full flex items-center justify-center px-6 py-3 rounded-full bg-primary text-white text-base font-medium hover:bg-primary-dark transition-colors"
+                        >
+                            Get Started
+                        </button>
                     </div>
                 </div>
             </div>
@@ -70,28 +163,66 @@ const links = [
 </header>
 
 <script>
-    let isToggled = false;
-    const navbar = document.querySelector("#nav") as HTMLElement;
-    const menuBtn = document.querySelector("#hamburger") as HTMLButtonElement;
-    const links = [...navbar.querySelector("#links-group").children] as HTMLAnchorElement[];
+    const menuButton = document.getElementById('menuButton');
+    const mobileMenu = document.getElementById('mobileMenu');
+    let isMenuOpen = false;
 
-    function toggleNavlinks() {
-        if (isToggled) {
-            navbar.dataset.state = "active";
+    menuButton?.addEventListener('click', () => {
+        isMenuOpen = !isMenuOpen;
+        if (isMenuOpen) {
+            mobileMenu?.classList.remove('hidden');
+            menuButton.querySelector('svg')?.classList.add('text-primary');
+            // Add slide down animation
+            mobileMenu?.classList.add('animate-slideDown');
         } else {
-            navbar.dataset.state = "";
+            // Add slide up animation
+            mobileMenu?.classList.add('animate-slideUp');
+            setTimeout(() => {
+                mobileMenu?.classList.add('hidden');
+                mobileMenu?.classList.remove('animate-slideUp');
+                menuButton.querySelector('svg')?.classList.remove('text-primary');
+            }, 200);
+        }
+    });
+
+    // Close mobile menu on window resize
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 1024 && isMenuOpen) {
+            mobileMenu?.classList.add('hidden');
+            menuButton?.querySelector('svg')?.classList.remove('text-primary');
+            isMenuOpen = false;
+        }
+    });
+</script>
+
+<style>
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
         }
     }
 
-    menuBtn.addEventListener("click", () => {
-        isToggled = !isToggled;
-        toggleNavlinks();
-    });
+    @keyframes slideUp {
+        from {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        to {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+    }
 
-    links.forEach((link) => {
-        link.addEventListener("click", () => {
-            isToggled = !isToggled;
-            toggleNavlinks();
-        });
-    });
-</script>
+    .animate-slideDown {
+        animation: slideDown 0.2s ease-out forwards;
+    }
+
+    .animate-slideUp {
+        animation: slideUp 0.2s ease-out forwards;
+    }
+</style>

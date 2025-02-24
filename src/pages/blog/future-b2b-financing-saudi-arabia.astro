@@ -1,0 +1,167 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Container from "../../components/Container.astro";
+import Icon from "../../components/Icon.astro";
+
+const post = {
+    title: "The Future of B2B Financing in Saudi Arabia",
+    excerpt: "Explore how digital transformation is reshaping B2B financing in the Kingdom, with new technologies enabling faster, more efficient funding solutions.",
+    category: "Industry Insights",
+    author: "Mohammed Al-Saud",
+    authorTitle: "Head of Market Research",
+    date: "2024-03-15",
+    image: "/images/blog/future-finance.webp",
+    readTime: "6 min read"
+};
+
+const relatedPosts = [
+    {
+        title: "Supply Chain Financing: The Next Big Thing",
+        excerpt: "Why supply chain financing is becoming crucial for businesses in 2024.",
+        slug: "supply-chain-financing-trends",
+        image: "/images/blog/supply-chain.webp"
+    },
+    {
+        title: "Digital Transformation in Construction Finance",
+        excerpt: "How construction companies are leveraging digital financing solutions.",
+        slug: "digital-transformation-construction-finance",
+        image: "/images/blog/digital-transformation.webp"
+    }
+];
+---
+
+<Layout title={`${post.title} | Buildnow Blog`}>
+    <div class="relative pt-32 lg:pt-36">
+        <Container>
+            <article class="max-w-4xl mx-auto">
+                {/* Header */}
+                <header class="mb-12">
+                    <div class="mb-3">
+                        <span class="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
+                            {post.category}
+                        </span>
+                    </div>
+                    <h1 class="text-4xl font-bold text-gray-900 dark:text-white md:text-5xl lg:text-6xl mb-6">
+                        {post.title}
+                    </h1>
+                    <div class="flex items-center gap-4 text-gray-600 dark:text-gray-400">
+                        <div class="flex items-center gap-2">
+                            <Icon name="user" class="w-5 h-5" />
+                            <span>{post.author}</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <Icon name="calendar" class="w-5 h-5" />
+                            <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <Icon name="clock" class="w-5 h-5" />
+                            <span>{post.readTime}</span>
+                        </div>
+                    </div>
+                </header>
+
+                {/* Featured Image */}
+                <div class="mb-12">
+                    <img 
+                        src={post.image} 
+                        alt={post.title}
+                        class="w-full rounded-2xl"
+                    />
+                </div>
+
+                {/* Content */}
+                <div class="prose prose-lg dark:prose-invert max-w-none">
+                    <h2>The Digital Revolution in B2B Financing</h2>
+                    <p>
+                        Saudi Arabia's B2B financing landscape is undergoing a remarkable transformation, driven by technological innovation and the Kingdom's Vision 2030 initiative. As we move further into 2024, we're seeing a convergence of traditional financing principles with cutting-edge digital solutions.
+                    </p>
+
+                    <h3>Key Trends Shaping the Future</h3>
+                    <ul>
+                        <li>
+                            <strong>AI-Powered Credit Assessment:</strong> Machine learning algorithms are revolutionizing how we evaluate business creditworthiness, enabling faster and more accurate decisions.
+                        </li>
+                        <li>
+                            <strong>Blockchain Integration:</strong> Smart contracts and distributed ledger technology are making transactions more transparent and secure.
+                        </li>
+                        <li>
+                            <strong>Real-time Data Analytics:</strong> Advanced analytics are helping financial institutions better understand business patterns and risk profiles.
+                        </li>
+                    </ul>
+
+                    <h3>The Impact on Saudi Businesses</h3>
+                    <p>
+                        For Saudi businesses, particularly in the construction and trading sectors, these advancements mean:
+                    </p>
+                    <ul>
+                        <li>Faster access to capital</li>
+                        <li>More flexible financing options</li>
+                        <li>Reduced paperwork and administrative burden</li>
+                        <li>Better integration with existing business systems</li>
+                    </ul>
+
+                    <blockquote>
+                        "The future of B2B financing in Saudi Arabia is not just about digitization – it's about creating an ecosystem that enables businesses to thrive in an increasingly competitive global market."
+                    </blockquote>
+
+                    <h3>Challenges and Opportunities</h3>
+                    <p>
+                        While the transformation presents significant opportunities, businesses need to be prepared for:
+                    </p>
+                    <ul>
+                        <li>Digital infrastructure upgrades</li>
+                        <li>Staff training and development</li>
+                        <li>Cybersecurity considerations</li>
+                        <li>Regulatory compliance</li>
+                    </ul>
+
+                    <h2>Looking Ahead</h2>
+                    <p>
+                        As we look to the future, it's clear that B2B financing in Saudi Arabia will continue to evolve. Businesses that embrace these changes and adapt their operations accordingly will be best positioned to succeed in this new era of digital finance.
+                    </p>
+                </div>
+
+                {/* Author Bio */}
+                <div class="mt-12 p-6 bg-gray-50 dark:bg-gray-800/50 rounded-2xl">
+                    <div class="flex items-center gap-4">
+                        <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
+                            <Icon name="user" class="w-8 h-8 text-primary" />
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{post.author}</h3>
+                            <p class="text-gray-600 dark:text-gray-400">{post.authorTitle}</p>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Related Posts */}
+                <div class="mt-16">
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Related Articles</h2>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        {relatedPosts.map(related => (
+                            <a href={`/blog/${related.slug}`} class="group">
+                                <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg">
+                                    <div class="relative aspect-[16/9] overflow-hidden">
+                                        <img 
+                                            src={related.image} 
+                                            alt={related.title}
+                                            class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+                                        />
+                                    </div>
+                                    <div class="p-6">
+                                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-primary transition-colors">
+                                            {related.title}
+                                        </h3>
+                                        <p class="text-gray-600 dark:text-gray-300">
+                                            {related.excerpt}
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        ))}
+                    </div>
+                </div>
+            </article>
+        </Container>
+    </div>
+</Layout> 

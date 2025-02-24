@@ -1,0 +1,168 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Container from "../../components/Container.astro";
+import Icon from "../../components/Icon.astro";
+import ROICalculator from "../../components/calculators/ROICalculator.astro";
+import PaymentCalculator from "../../components/calculators/PaymentCalculator.astro";
+import CreditLimitCalculator from "../../components/calculators/CreditLimitCalculator.astro";
+
+const tools = [
+    {
+        id: "roi",
+        title: "ROI Calculator",
+        description: "Calculate your potential return on investment when using Buildnow's financing solutions",
+        icon: "chart-line"
+    },
+    {
+        id: "payment",
+        title: "Payment Calculator",
+        description: "Estimate your monthly payments based on your purchase amount and terms",
+        icon: "calculator"
+    },
+    {
+        id: "credit",
+        title: "Credit Limit Estimator",
+        description: "Get an estimate of your potential credit limit based on your business profile",
+        icon: "credit-card"
+    }
+];
+---
+
+<Layout title="Financial Tools | Buildnow">
+    <div class="relative pt-32 lg:pt-36">
+        <div aria-hidden="true" class="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-20">
+            <div class="blur-[106px] h-56 bg-gradient-to-br from-primary to-purple-400"></div>
+            <div class="blur-[106px] h-32 bg-gradient-to-r from-cyan-400 to-sky-300"></div>
+        </div>
+
+        <Container>
+            <div class="relative mx-auto lg:w-3/4 text-center">
+                <h1 class="text-5xl font-bold text-gray-900 dark:text-white md:text-6xl lg:text-7xl">
+                    Financial Tools
+                </h1>
+                <p class="mt-8 text-lg text-gray-600 dark:text-gray-300">
+                    Make informed decisions with our suite of financial calculators. Get instant insights into ROI, payments, and credit limits.
+                </p>
+            </div>
+
+            <div class="mt-16 grid gap-8 md:grid-cols-3">
+                {tools.map(tool => (
+                    <button 
+                        class="tool-selector relative p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 group"
+                        data-tool={tool.id}
+                    >
+                        <div class="absolute top-4 right-4 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                            <Icon name={tool.icon} class="w-6 h-6 text-primary" />
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">{tool.title}</h3>
+                        <p class="text-gray-600 dark:text-gray-300">{tool.description}</p>
+                        <span class="absolute bottom-4 right-4 text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+                            Try Now →
+                        </span>
+                    </button>
+                ))}
+            </div>
+
+            <div class="mt-16">
+                <div id="roi-calculator" class="calculator-section transition-all duration-300">
+                    <ROICalculator />
+                </div>
+                <div id="payment-calculator" class="calculator-section hidden transition-all duration-300">
+                    <PaymentCalculator />
+                </div>
+                <div id="credit-calculator" class="calculator-section hidden transition-all duration-300">
+                    <CreditLimitCalculator />
+                </div>
+            </div>
+
+            <div class="mt-20 bg-gray-50 dark:bg-gray-800/50 rounded-2xl p-8">
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Need Help?</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0">
+                            <Icon name="book" class="w-6 h-6 text-primary" />
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-900 dark:text-white">Documentation</h3>
+                            <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">
+                                Learn how to use our calculators effectively
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0">
+                            <Icon name="chat" class="w-6 h-6 text-primary" />
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-900 dark:text-white">Live Chat</h3>
+                            <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">
+                                Get instant help from our support team
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0">
+                            <Icon name="phone" class="w-6 h-6 text-primary" />
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-900 dark:text-white">Contact Sales</h3>
+                            <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">
+                                Discuss your specific needs with our experts
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </Container>
+    </div>
+</Layout>
+
+<style>
+    .calculator-section {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: slideUp 0.5s ease forwards;
+    }
+
+    @keyframes slideUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<script>
+    const toolSelectors = document.querySelectorAll<HTMLButtonElement>('.tool-selector');
+    const calculatorSections = document.querySelectorAll<HTMLElement>('.calculator-section');
+
+    // Set initial active state
+    if (toolSelectors[0]) {
+        toolSelectors[0].classList.add('ring-2', 'ring-primary', 'ring-offset-2');
+    }
+
+    toolSelectors.forEach(selector => {
+        selector.addEventListener('click', () => {
+            const toolId = selector.getAttribute('data-tool');
+            if (!toolId) return;
+            
+            // Update active state of selectors
+            toolSelectors.forEach(s => {
+                s.classList.remove('ring-2', 'ring-primary', 'ring-offset-2');
+            });
+            selector.classList.add('ring-2', 'ring-primary', 'ring-offset-2');
+            
+            // Show selected calculator with animation
+            calculatorSections.forEach(section => {
+                if (section.id === `${toolId}-calculator`) {
+                    section.classList.remove('hidden');
+                    section.style.animation = 'none';
+                    section.offsetHeight; // Trigger reflow
+                    section.style.animation = null;
+                } else {
+                    section.classList.add('hidden');
+                }
+            });
+        });
+    });
+</script> 

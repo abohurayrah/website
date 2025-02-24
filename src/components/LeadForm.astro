@@ -1,0 +1,246 @@
+---
+import Icon from "./Icon.astro";
+---
+
+<div id="leadFormModal" class="fixed inset-0 z-50 hidden">
+    <!-- Backdrop with blur -->
+    <div class="fixed inset-0 bg-gray-900/50 backdrop-blur-sm transition-opacity"></div>
+    
+    <!-- Modal -->
+    <div class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-20">
+        <div class="relative w-full max-w-lg overflow-hidden rounded-2xl bg-white dark:bg-gray-800 shadow-xl ring-1 ring-gray-900/5 transition-all">
+            <!-- Close button -->
+            <button 
+                onclick="closeLeadForm()"
+                class="absolute right-4 top-4 flex items-center justify-center w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 transition-colors"
+                aria-label="Close form"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+
+            <div class="p-6 sm:p-8">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                        Start Your Journey
+                    </h2>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Get approved within 24 hours
+                    </p>
+                </div>
+
+                <!-- Progress Steps -->
+                <div class="flex items-center justify-between mb-8">
+                    <div class="flex-1">
+                        <div class="relative">
+                            <div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center">1</div>
+                            <div class="absolute -bottom-5 left-0 right-0 text-xs text-center text-gray-600">Company</div>
+                        </div>
+                    </div>
+                    <div class="flex-1">
+                        <div class="relative opacity-50">
+                            <div class="w-8 h-8 rounded-full bg-gray-200 text-gray-600 flex items-center justify-center">2</div>
+                            <div class="absolute -bottom-5 left-0 right-0 text-xs text-center text-gray-600">Verification</div>
+                        </div>
+                    </div>
+                    <div class="flex-1">
+                        <div class="relative opacity-50">
+                            <div class="w-8 h-8 rounded-full bg-gray-200 text-gray-600 flex items-center justify-center">3</div>
+                            <div class="absolute -bottom-5 left-0 right-0 text-xs text-center text-gray-600">Approval</div>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="space-y-5" id="leadForm">
+                    <div class="space-y-1">
+                        <div class="relative">
+                            <input 
+                                type="text"
+                                id="company" 
+                                name="company"
+                                required
+                                class="peer w-full h-11 px-4 rounded-lg border border-gray-300 dark:border-gray-600 bg-transparent text-gray-900 dark:text-white focus:ring-2 focus:ring-primary/20 focus:border-primary dark:focus:ring-primary/30 transition-colors placeholder-transparent"
+                                placeholder="Company Name"
+                            />
+                            <label 
+                                for="company"
+                                class="absolute left-4 -top-2.5 bg-white dark:bg-gray-800 px-1 text-sm text-gray-600 dark:text-gray-400 transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm"
+                            >
+                                Company Name
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="space-y-1">
+                        <div class="relative">
+                            <input 
+                                type="number"
+                                id="foundingYear" 
+                                name="foundingYear"
+                                required
+                                min="1900"
+                                max="2024"
+                                class="peer w-full h-11 px-4 rounded-lg border border-gray-300 dark:border-gray-600 bg-transparent text-gray-900 dark:text-white focus:ring-2 focus:ring-primary/20 focus:border-primary dark:focus:ring-primary/30 transition-colors placeholder-transparent"
+                                placeholder="Founding Year"
+                            />
+                            <label 
+                                for="foundingYear"
+                                class="absolute left-4 -top-2.5 bg-white dark:bg-gray-800 px-1 text-sm text-gray-600 dark:text-gray-400 transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm"
+                            >
+                                Founding Year
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="space-y-1">
+                        <div class="relative">
+                            <select 
+                                id="revenue"
+                                name="revenue"
+                                required
+                                class="peer w-full h-11 px-4 rounded-lg border border-gray-300 dark:border-gray-600 bg-transparent text-gray-900 dark:text-white focus:ring-2 focus:ring-primary/20 focus:border-primary dark:focus:ring-primary/30 transition-colors"
+                            >
+                                <option value="">Select revenue range</option>
+                                <option value="less-than-2m">Less than 2 million SAR</option>
+                                <option value="2-10m">2 - 10 million SAR</option>
+                                <option value="10-30m">10 - 30 million SAR</option>
+                                <option value="30-60m">30 - 60 million SAR</option>
+                                <option value="60m-plus">60 million SAR or more</option>
+                            </select>
+                            <label 
+                                for="revenue"
+                                class="absolute left-4 -top-2.5 bg-white dark:bg-gray-800 px-1 text-sm text-gray-600 dark:text-gray-400"
+                            >
+                                Annual Revenue
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="space-y-1">
+                        <div class="relative">
+                            <select 
+                                id="requestedAmount"
+                                name="requestedAmount"
+                                required
+                                class="peer w-full h-11 px-4 rounded-lg border border-gray-300 dark:border-gray-600 bg-transparent text-gray-900 dark:text-white focus:ring-2 focus:ring-primary/20 focus:border-primary dark:focus:ring-primary/30 transition-colors"
+                            >
+                                <option value="">Select amount range</option>
+                                <option value="less-than-100k">Less than 100,000 SAR</option>
+                                <option value="100k-500k">100,000 - 500,000 SAR</option>
+                                <option value="500k-800k">500,000 - 800,000 SAR</option>
+                                <option value="800k-1.5m">800,000 - 1.5 million SAR</option>
+                                <option value="1.5m-plus">1.5 million SAR or more</option>
+                            </select>
+                            <label 
+                                for="requestedAmount"
+                                class="absolute left-4 -top-2.5 bg-white dark:bg-gray-800 px-1 text-sm text-gray-600 dark:text-gray-400"
+                            >
+                                Requested Amount
+                            </label>
+                        </div>
+                    </div>
+
+                    <button 
+                        type="submit"
+                        class="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-lg before:bg-primary before:transition before:duration-300 hover:before:scale-[1.02] active:duration-75 active:before:scale-95"
+                    >
+                        <span class="relative text-base font-semibold text-white">Submit Application</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Show modal with animation
+    window.openLeadForm = () => {
+        const modal = document.getElementById('leadFormModal');
+        document.body.style.overflow = 'hidden';
+        modal.classList.remove('hidden');
+        // Trigger animation
+        requestAnimationFrame(() => {
+            modal.querySelector('div').classList.add('opacity-100');
+            modal.querySelector('.fixed.inset-0.z-50').classList.add('scale-100', 'opacity-100');
+        });
+    }
+
+    // Hide modal with animation
+    window.closeLeadForm = () => {
+        const modal = document.getElementById('leadFormModal');
+        document.body.style.overflow = 'auto';
+        modal.querySelector('div').classList.remove('opacity-100');
+        modal.querySelector('.fixed.inset-0.z-50').classList.remove('scale-100', 'opacity-100');
+        // Wait for animation to finish
+        setTimeout(() => {
+            modal.classList.add('hidden');
+        }, 200);
+    }
+
+    // Close on backdrop click
+    document.getElementById('leadFormModal').addEventListener('click', (e) => {
+        if (e.target === e.currentTarget) {
+            closeLeadForm();
+        }
+    });
+
+    // Form submission
+    document.getElementById('leadForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        // Add your form submission logic here
+        const formData = new FormData(e.target);
+        const data = Object.fromEntries(formData);
+        
+        try {
+            // Show success message
+            const successMessage = document.createElement('div');
+            successMessage.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg transform transition-all duration-500 translate-y-0';
+            successMessage.textContent = 'Thank you! We will contact you shortly.';
+            document.body.appendChild(successMessage);
+            
+            // Remove message after 3 seconds
+            setTimeout(() => {
+                successMessage.classList.add('translate-y-[-100%]');
+                setTimeout(() => successMessage.remove(), 500);
+            }, 3000);
+            
+            closeLeadForm();
+        } catch (error) {
+            // Show error message
+            const errorMessage = document.createElement('div');
+            errorMessage.className = 'fixed top-4 right-4 bg-red-500 text-white px-6 py-3 rounded-lg shadow-lg';
+            errorMessage.textContent = 'Something went wrong. Please try again.';
+            document.body.appendChild(errorMessage);
+            
+            setTimeout(() => errorMessage.remove(), 3000);
+        }
+    });
+
+    // Add form validation and better error handling
+    const form = document.getElementById('leadForm');
+    const inputs = form.querySelectorAll('input, select');
+
+    inputs.forEach(input => {
+        input.addEventListener('input', () => {
+            validateInput(input);
+        });
+    });
+
+    function validateInput(input) {
+        const errorElement = input.parentElement.querySelector('.error-message');
+        if (input.validity.valid) {
+            input.classList.remove('border-red-500');
+            if (errorElement) errorElement.remove();
+        } else {
+            input.classList.add('border-red-500');
+            if (!errorElement) {
+                const error = document.createElement('p');
+                error.className = 'error-message text-sm text-red-500 mt-1';
+                error.textContent = input.validationMessage;
+                input.parentElement.appendChild(error);
+            }
+        }
+    }
+</script> 

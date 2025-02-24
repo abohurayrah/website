@@ -1,0 +1,128 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Container from "../../components/Container.astro";
+
+const openPositions = [
+    {
+        department: "Engineering",
+        roles: [
+            { title: "Senior Backend Engineer", location: "Riyadh", type: "Full-time" },
+            { title: "Frontend Developer", location: "Riyadh", type: "Full-time" },
+            { title: "DevOps Engineer", location: "Remote", type: "Full-time" },
+        ]
+    },
+    {
+        department: "Product & Design",
+        roles: [
+            { title: "Product Manager", location: "Riyadh", type: "Full-time" },
+            { title: "UI/UX Designer", location: "Riyadh", type: "Full-time" },
+        ]
+    },
+    {
+        department: "Business",
+        roles: [
+            { title: "Account Executive", location: "Riyadh", type: "Full-time" },
+            { title: "Business Development Manager", location: "Riyadh", type: "Full-time" },
+            { title: "Risk Analyst", location: "Riyadh", type: "Full-time" },
+        ]
+    }
+];
+---
+
+<Layout title="Careers">
+    <div class="relative pt-32 lg:pt-36">
+        <Container>
+            <div class="mx-auto max-w-3xl text-center">
+                <h1 class="text-5xl font-bold text-gray-900 dark:text-white md:text-6xl lg:text-7xl">Join Our Mission</h1>
+                <p class="mt-8 text-lg text-gray-600 dark:text-gray-300">Help us transform B2B financing and build the future of trade. We're looking for passionate individuals who want to make a real impact.</p>
+            </div>
+
+            <div class="mt-16 grid gap-8 md:grid-cols-3">
+                <div class="relative flex flex-col p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 dark:bg-primary/20">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                        </div>
+                        <h3 class="ml-4 text-xl font-semibold text-gray-900 dark:text-white">Innovation First</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300">Work on cutting-edge solutions that are reshaping the industry.</p>
+                </div>
+
+                <div class="relative flex flex-col p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 dark:bg-primary/20">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="ml-4 text-xl font-semibold text-gray-900 dark:text-white">Great Team</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300">Join a diverse team of talented individuals who support and inspire each other.</p>
+                </div>
+
+                <div class="relative flex flex-col p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 dark:bg-primary/20">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                            </svg>
+                        </div>
+                        <h3 class="ml-4 text-xl font-semibold text-gray-900 dark:text-white">Growth</h3>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300">Continuous learning and development opportunities to advance your career.</p>
+                </div>
+            </div>
+
+            <div class="mt-20">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-12">Open Positions</h2>
+                
+                <div class="space-y-12">
+                    {openPositions.map((department) => (
+                        <div class="space-y-6">
+                            <h3 class="text-2xl font-semibold text-gray-900 dark:text-white">{department.department}</h3>
+                            <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                                {department.roles.map((role) => (
+                                    <div class="relative flex flex-col p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-xl hover:shadow-2xl transition-shadow">
+                                        <h4 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">{role.title}</h4>
+                                        <div class="flex items-center gap-4 text-gray-600 dark:text-gray-300 mb-6">
+                                            <span class="flex items-center gap-1">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                </svg>
+                                                {role.location}
+                                            </span>
+                                            <span class="flex items-center gap-1">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                </svg>
+                                                {role.type}
+                                            </span>
+                                        </div>
+                                        <a href="#" class="mt-auto relative flex h-11 items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:border before:border-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95">
+                                            <span class="relative text-base font-semibold text-primary">Apply Now</span>
+                                        </a>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            <div class="mt-20">
+                <div class="relative rounded-2xl bg-gradient-to-b from-primary to-primary/80 p-8 sm:p-12">
+                    <div class="relative text-center">
+                        <h2 class="text-3xl font-bold text-white mb-6">Don't See Your Role?</h2>
+                        <p class="text-white/90 mb-8">We're always looking for talented people to join our team. Send us your resume and we'll keep you in mind for future opportunities.</p>
+                        <a href="#" class="inline-flex h-11 items-center justify-center px-6 bg-white rounded-full text-primary font-semibold hover:bg-white/90 transition">
+                            Send Your Resume
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </Container>
+    </div>
+</Layout> 

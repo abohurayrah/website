@@ -1,0 +1,372 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import Container from "../../../components/Container.astro";
+import Icon from "../../../components/Icon.astro";
+
+const stats = [
+    {
+        value: "15-20%",
+        title: "Conversion Rate Lift",
+        description: "Higher checkout completion"
+    },
+    {
+        value: "25%",
+        title: "AOV Expansion",
+        description: "Larger order values"
+    },
+    {
+        value: "12%",
+        title: "Cart Recovery",
+        description: "Reduced abandonment"
+    }
+];
+
+const benefits = [
+    {
+        title: "Higher Conversions",
+        description: "Increase checkout completion with flexible payment options",
+        icon: "chart-bar",
+        highlight: "+20% conversion"
+    },
+    {
+        title: "Larger Orders",
+        description: "Customers spend more with extended payment terms",
+        icon: "shopping-cart",
+        highlight: "25% AOV increase"
+    },
+    {
+        title: "Instant Payments",
+        description: "Get paid upfront while offering flexible terms",
+        icon: "money",
+        highlight: "24hr settlement"
+    },
+    {
+        title: "Zero Risk",
+        description: "We handle all payment collection and defaults",
+        icon: "shield-check",
+        highlight: "100% guaranteed"
+    }
+];
+
+const steps = [
+    {
+        title: "Choose your needs",
+        description: "Shop online for the materials your business needs from one of our partners' websites, and select payment through us by clicking the \"Pay Later\" button.",
+        image: "/images/step 1.webp"
+    },
+    {
+        title: "Select payment terms",
+        description: "Choose the payment terms that suit your needs to complete your purchase easily and within your budget.",
+        image: "/images/step 2.webp"
+    },
+    {
+        title: "Receive & Pay",
+        description: "Once your payment options are confirmed, your order will be delivered to you, and you can pay us according to the payment terms you have set.",
+        image: "/images/step 3.webp"
+    }
+];
+---
+
+<Layout title="BNPL Button for B2B | Buildnow">
+    <div class="relative">
+        {/* Background Elements */}
+        <div class="absolute inset-0 pointer-events-none overflow-hidden">
+            <div class="absolute inset-0 bg-white dark:bg-gray-900"></div>
+            <div class="absolute right-[5%] -top-20 w-[800px] h-[800px] bg-yellow-300/20 dark:bg-yellow-300/10 rounded-full blur-3xl animate-float"></div>
+            <div class="absolute -left-[10%] top-[30%] w-[600px] h-[600px] bg-yellow-300/15 dark:bg-yellow-300/10 rounded-full blur-3xl animate-float-delayed"></div>
+            <div class="absolute right-[15%] top-[45%] w-[500px] h-[500px] bg-yellow-300/20 dark:bg-yellow-300/10 rounded-full blur-3xl animate-float"></div>
+        </div>
+
+        {/* Hero Section */}
+        <div class="relative min-h-[80vh] flex items-center">
+            <Container>
+                <div class="relative grid lg:grid-cols-2 gap-12 items-center pt-24 lg:pt-16">
+                    {/* Left Column - Content */}
+                    <div class="space-y-10 text-center lg:text-left">
+                        <div class="flex flex-col lg:flex-row items-center gap-4 lg:gap-8">
+                            <div class="inline-flex items-center px-5 py-2.5 rounded-full bg-yellow-300/20 dark:bg-yellow-300/10 text-gray-900 dark:text-white">
+                                <Icon name="sparkles" class="w-5 h-5 mr-2.5 text-yellow-400" />
+                                <span class="text-sm font-semibold tracking-wide">Boost Sales by up to 25%</span>
+                            </div>
+                        </div>
+                        
+                        <h1 class="text-4xl lg:text-5xl xl:text-6xl font-extrabold text-gray-900 dark:text-white leading-[1.15] tracking-tight">
+                            Offer <span class="text-yellow-400 dark:text-yellow-300 neon-text">BNPL</span> to Your B2B Customers
+                        </h1>
+                        
+                        <p class="text-xl text-gray-700 dark:text-gray-200 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                            Get paid instantly while offering flexible payment terms to your customers. Zero risk, instant integration, and guaranteed payments.
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                            <button 
+                                onclick="openLeadForm()"
+                                class="w-full sm:w-auto px-8 py-4 bg-yellow-300 text-gray-900 rounded-xl hover:bg-yellow-400 transition-all duration-300 font-semibold text-lg shadow-[0_0_15px_rgba(253,224,71,0.3)] dark:shadow-[0_0_15px_rgba(253,224,71,0.15)]"
+                            >
+                                <span class="relative z-10 flex items-center justify-center">
+                                    Get Started Now
+                                    <Icon name="arrow-right" class="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
+                                </span>
+                            </button>
+                            <a 
+                                href="#how-it-works"
+                                class="w-full sm:w-auto px-8 py-4 border-2 border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-200 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-300 font-semibold text-lg text-center"
+                            >
+                                See How It Works
+                            </a>
+                        </div>
+                    </div>
+
+                    {/* Right Column - Stats */}
+                    <div class="lg:w-full">
+                        <div class="relative">
+                            <div class="absolute inset-0 bg-gradient-to-r from-yellow-100 to-yellow-50 dark:from-yellow-900 dark:to-yellow-800 rounded-3xl opacity-20 blur-xl"></div>
+                            <div class="relative space-y-6">
+                                {/* Stats Grid */}
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                    {stats.map(stat => (
+                                        <div class="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg">
+                                            <p class="text-4xl font-bold text-yellow-400 mb-2">{stat.value}</p>
+                                            <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-1">{stat.title}</h4>
+                                            <p class="text-sm text-gray-600 dark:text-gray-400">{stat.description}</p>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                {/* Success Indicators */}
+                                <div class="space-y-4">
+                                    <div class="flex items-center gap-4 p-5 bg-green-100 dark:bg-green-900/30 rounded-xl">
+                                        <div class="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center">
+                                            <Icon name="check-circle" class="w-6 h-6 text-white" />
+                                        </div>
+                                        <div class="flex-1">
+                                            <h4 class="text-base font-semibold text-gray-900 dark:text-white mb-1">5-Minute Integration</h4>
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">Simple code snippet to add to your checkout</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-4 p-5 bg-blue-100 dark:bg-blue-900/30 rounded-xl">
+                                        <div class="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center">
+                                            <Icon name="shield-check" class="w-6 h-6 text-white" />
+                                        </div>
+                                        <div class="flex-1">
+                                            <h4 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Risk-Free Guarantee</h4>
+                                            <p class="text-sm text-gray-700 dark:text-gray-300">Get paid instantly while we handle collections</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </Container>
+        </div>
+
+        {/* Benefits Section */}
+        <div id="benefits" class="py-12 bg-white dark:bg-gray-900">
+            <Container>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    {benefits.map(benefit => (
+                        <div class="group relative">
+                            <div class="absolute inset-0 bg-gradient-to-b from-yellow-50 to-transparent dark:from-yellow-900/20 dark:to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div class="relative flex flex-col p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 transition-transform duration-300 hover:-translate-y-1">
+                                <div class="flex items-center justify-center w-14 h-14 mb-4 rounded-2xl bg-primary/10 hover:scale-110 transition-transform duration-300">
+                                    <Icon name={benefit.icon} class="w-7 h-7 text-primary" />
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">{benefit.title}</h3>
+                                <p class="text-gray-600 dark:text-gray-300 mb-4">{benefit.description}</p>
+                                <div class="mt-auto">
+                                    <span class="inline-block px-3 py-1.5 bg-primary/10 rounded-full text-sm font-semibold text-primary">
+                                        {benefit.highlight}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </Container>
+        </div>
+
+        {/* How It Works Section */}
+        <div class="relative py-20" id="how-it-works">
+            {/* Background layer */}
+            <div class="absolute inset-0 bg-white dark:bg-gray-900 -z-10"></div>
+            
+            <Container>
+                <div class="relative z-10">
+                    <div class="text-center mb-16">
+                        <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-6">
+                            How It Works
+                        </h2>
+                        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                            Get started with our simple 3-step process
+                        </p>
+                    </div>
+
+                    <div class="space-y-20">
+                        {steps.map((step, index) => (
+                            <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8">
+                                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                                    {index % 2 === 0 ? (
+                                        <>
+                                            <div class="relative">
+                                                <img 
+                                                    src={step.image} 
+                                                    alt={`Step ${index + 1}: ${step.title}`}
+                                                    class="rounded-2xl shadow-xl w-full max-w-lg mx-auto"
+                                                />
+                                            </div>
+                                            <div class="space-y-6">
+                                                <div class="inline-flex items-center px-4 py-2 rounded-full bg-yellow-300 text-gray-900">
+                                                    <span class="text-base font-bold">Step {index + 1}</span>
+                                                </div>
+                                                <h3 class="text-3xl font-bold text-gray-900 dark:text-white">{step.title}</h3>
+                                                <p class="text-xl text-gray-700 dark:text-gray-300 leading-relaxed">{step.description}</p>
+                                            </div>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div class="space-y-6">
+                                                <div class="inline-flex items-center px-4 py-2 rounded-full bg-yellow-300 text-gray-900">
+                                                    <span class="text-base font-bold">Step {index + 1}</span>
+                                                </div>
+                                                <h3 class="text-3xl font-bold text-gray-900 dark:text-white">{step.title}</h3>
+                                                <p class="text-xl text-gray-700 dark:text-gray-300 leading-relaxed">{step.description}</p>
+                                            </div>
+                                            <div class="relative">
+                                                <img 
+                                                    src={step.image} 
+                                                    alt={`Step ${index + 1}: ${step.title}`}
+                                                    class="rounded-2xl shadow-xl w-full max-w-lg mx-auto"
+                                                />
+                                            </div>
+                                        </>
+                                    )}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </Container>
+        </div>
+
+        {/* Business Impact Section */}
+        <div class="mt-12 grid md:grid-cols-3 gap-6">
+            <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700">
+                <div class="w-12 h-12 rounded-xl bg-yellow-300/20 flex items-center justify-center mb-4">
+                    <Icon name="chart-bar" class="w-6 h-6 text-yellow-400" />
+                </div>
+                <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Conversion Impact</h4>
+                <p class="text-gray-600 dark:text-gray-300">
+                    Boost checkout completion rates by up to 20% with flexible payment options
+                </p>
+                <div class="mt-4 flex items-center gap-2">
+                    <span class="text-2xl font-bold text-yellow-400">+20%</span>
+                    <span class="text-gray-500">conversion</span>
+                </div>
+            </div>
+            <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700">
+                <div class="w-12 h-12 rounded-xl bg-yellow-300/20 flex items-center justify-center mb-4">
+                    <Icon name="shopping-cart" class="w-6 h-6 text-yellow-400" />
+                </div>
+                <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-2">AOV Growth</h4>
+                <p class="text-gray-600 dark:text-gray-300">
+                    Customers spend 25% more on average with extended payment terms
+                </p>
+                <div class="mt-4 flex items-center gap-2">
+                    <span class="text-2xl font-bold text-yellow-400">+25%</span>
+                    <span class="text-gray-500">order value</span>
+                </div>
+            </div>
+            <div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700">
+                <div class="w-12 h-12 rounded-xl bg-yellow-300/20 flex items-center justify-center mb-4">
+                    <Icon name="arrow-path" class="w-6 h-6 text-yellow-400" />
+                </div>
+                <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Cart Recovery</h4>
+                <p class="text-gray-600 dark:text-gray-300">
+                    Reduce cart abandonment by offering flexible payment options
+                </p>
+                <div class="mt-4 flex items-center gap-2">
+                    <span class="text-2xl font-bold text-yellow-400">12%</span>
+                    <span class="text-gray-500">recovery rate</span>
+                </div>
+            </div>
+        </div>
+
+        {/* CTA Section */}
+        <div class="py-12">
+            <Container>
+                <div class="relative overflow-hidden rounded-3xl border-2 border-yellow-300 shadow-[0_0_15px_rgba(253,224,71,0.3)] dark:border-yellow-300 dark:shadow-[0_0_15px_rgba(253,224,71,0.15)]">
+                    <div class="relative px-8 py-12 sm:px-12 sm:py-16 backdrop-blur-sm bg-white/50 dark:bg-gray-900/50">
+                        <div class="max-w-3xl mx-auto text-center">
+                            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6 tracking-tight">
+                                Ready to Boost Your B2B Sales?
+                            </h2>
+                            <p class="text-xl text-gray-700 dark:text-gray-200 leading-relaxed mb-8">
+                                Join leading suppliers who are using our BNPL solution to increase sales and build stronger customer relationships.
+                            </p>
+                            <div class="flex justify-center">
+                                <button 
+                                    onclick="openLeadForm()"
+                                    class="w-full sm:w-auto px-8 py-4 bg-yellow-300 text-gray-900 rounded-xl hover:bg-yellow-400 transition-all duration-300 font-semibold text-lg shadow-[0_0_15px_rgba(253,224,71,0.3)] dark:shadow-[0_0_15px_rgba(253,224,71,0.15)]"
+                                >
+                                    <span class="relative z-10 flex items-center justify-center">
+                                        Get Started Now
+                                        <Icon name="arrow-right" class="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </Container>
+        </div>
+    </div>
+</Layout>
+
+<style>
+    @keyframes float {
+        0%, 100% { 
+            transform: translateY(0) rotate(0deg);
+            box-shadow: 0 0 15px rgba(253, 224, 71, 0.2);
+        }
+        50% { 
+            transform: translateY(-20px) rotate(1deg);
+            box-shadow: 0 0 25px rgba(253, 224, 71, 0.3);
+        }
+    }
+
+    @keyframes float-delayed {
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        50% { transform: translateY(-15px) rotate(-1deg); }
+    }
+
+    .animate-float {
+        animation: float 15s ease-in-out infinite;
+    }
+
+    .animate-float-delayed {
+        animation: float-delayed 18s ease-in-out infinite;
+        animation-delay: 2s;
+    }
+
+    .neon-border {
+        border: 2px solid #facc15;
+        box-shadow: 0 0 15px rgba(253, 224, 71, 0.3);
+    }
+
+    .neon-text {
+        color: #facc15;
+        text-shadow: 0 0 10px rgba(253, 224, 71, 0.3);
+    }
+
+    /* Dark mode adjustments */
+    .dark .neon-border {
+        border-color: #fef08a;
+        box-shadow: 0 0 15px rgba(253, 224, 71, 0.15);
+    }
+
+    .dark .neon-text {
+        color: #fef08a;
+        text-shadow: 0 0 10px rgba(253, 224, 71, 0.15);
+    }
+</style> 

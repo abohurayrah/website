@@ -1,0 +1,277 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import Container from "../../../components/Container.astro";
+import Icon from "../../../components/Icon.astro";
+
+const creditOptions = [
+    {
+        type: "Express Credit",
+        limit: "50,000 SAR - 500,000 SAR",
+        approval: "Instant approval",
+        features: [
+            "Instant decision",
+            "Perfect for material purchases",
+            "Flexible payment schedules"
+        ],
+        bestFor: "Quick construction supplies & equipment",
+        icon: "lightning"
+    },
+    {
+        type: "Core Credit",
+        limit: "500,000 SAR to 2,000,000 SAR",
+        approval: "12 hours approval",
+        features: [
+            "Competitive rates",
+            "Ideal for ongoing projects",
+            "Extended payment terms"
+        ],
+        bestFor: "Mid-size construction & business projects",
+        icon: "building"
+    },
+    {
+        type: "Large Credit",
+        limit: "2,000,000 SAR to 20,000,000 SAR",
+        approval: "24 hours approval",
+        features: [
+            "Custom payment structures",
+            "Project-based financing",
+            "Scalable credit limits"
+        ],
+        bestFor: "Major construction & enterprise projects",
+        icon: "chart-bar"
+    }
+];
+
+const features = [
+    {
+        title: "Sharia Compliant",
+        description: "All financing solutions are 100% compliant with Islamic Sharia principles, ensuring peace of mind for your business.",
+        icon: "check-shield"
+    },
+    {
+        title: "Industry-Specific Solutions",
+        description: "Tailored primarily for construction with flexible terms that work for other business sectors too.",
+        icon: "settings"
+    },
+    {
+        title: "Rapid Processing",
+        description: "Quick approvals designed for the fast-paced nature of construction and business operations.",
+        icon: "clock"
+    }
+];
+
+const steps = [
+    {
+        number: "01",
+        title: "Select Your Credit Line",
+        description: "Choose from our range of credit solutions based on your project and business requirements."
+    },
+    {
+        number: "02",
+        title: "Simple Application",
+        description: "Fast online application with construction-friendly documentation requirements."
+    },
+    {
+        number: "03",
+        title: "Quick Funding",
+        description: "Get your credit line activated and start making purchases right away."
+    }
+];
+
+const stats = [
+    { value: "20M SAR", label: "Maximum Credit", prefix: "Up to" },
+    { value: "24hrs", label: "Fast Approval", prefix: "Within" },
+    { value: "100%", label: "Sharia Compliant", prefix: "" },
+    { value: "12mo", label: "Payment Terms", prefix: "Up to" }
+];
+---
+
+<Layout title="Credit Solutions | Buildnow">
+    <div class="relative">
+        {/* Decorative blobs */}
+        <div aria-hidden="true" class="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-20 dark:opacity-10">
+            <div class="blur-[106px] h-56 bg-gradient-to-br from-primary to-purple-400 dark:from-blue-700"></div>
+            <div class="blur-[106px] h-32 bg-gradient-to-r from-cyan-400 to-sky-300 dark:to-indigo-600"></div>
+        </div>
+
+        <Container>
+            <div class="relative pt-32 md:pt-36">
+                {/* Hero Section */}
+                <div class="mx-auto lg:w-3/4 text-center mb-16">
+                    <div class="inline-flex items-center justify-center px-4 py-2 rounded-full bg-primary/20 text-primary font-medium mb-8 shadow-sm">
+                        <span class="text-sm font-semibold text-black dark:text-black">Up to 20M SAR Credit Limit</span>
+                    </div>
+                    <h1 class="text-5xl font-bold text-gray-900 dark:text-white md:text-6xl lg:text-7xl mb-8">
+                        Smart Credit Solutions for <span class="text-primary dark:text-primary">Growing Businesses</span>
+                    </h1>
+                    <p class="mt-8 text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                        Specialized financing for construction businesses, with flexible options that work for any business operation. 
+                        From quick material purchases to large-scale project funding, we've got you covered.
+                    </p>
+                    <div class="mt-12 flex flex-wrap justify-center gap-6">
+                        <button 
+                            onclick="openLeadForm()"
+                            class="relative flex h-12 w-full items-center justify-center px-8 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
+                        >
+                            <span class="relative text-base font-semibold text-white">Get Started</span>
+                        </button>
+                        <a 
+                            href="#compare"
+                            class="relative flex h-12 w-full items-center justify-center px-8 before:absolute before:inset-0 before:rounded-full before:border before:border-gray-200 dark:before:border-gray-700 before:bg-gray-50 dark:before:bg-gray-900 before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
+                        >
+                            <span class="relative text-base font-semibold text-gray-900 dark:text-white">Compare Options</span>
+                        </a>
+                    </div>
+                </div>
+
+                {/* Stats Section */}
+                <div class="relative">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-12">
+                        {stats.map(stat => (
+                            <div class="relative flex flex-col items-center">
+                                <div class="flex items-end gap-2">
+                                    {stat.prefix && (
+                                        <span class="text-sm text-gray-600 dark:text-gray-400 mb-1">{stat.prefix}</span>
+                                    )}
+                                    <span class="text-3xl font-bold text-gray-900 dark:text-white">{stat.value}</span>
+                                </div>
+                                <span class="text-sm text-gray-600 dark:text-gray-400 mt-2">{stat.label}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Credit Options Section */}
+                <div class="mt-32" id="compare">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                            Flexible Credit Solutions
+                        </h2>
+                        <p class="text-lg text-gray-600 dark:text-gray-300">
+                            Choose the right financing option for your projects and business growth
+                        </p>
+                    </div>
+                    <div class="grid gap-8 md:grid-cols-3">
+                        {creditOptions.map((option, index) => (
+                            <div class={`relative flex flex-col p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-xl transition-transform hover:-translate-y-1 border-2 border-yellow-300/30 dark:border-yellow-300/20 ${index === 1 ? 'ring-2 ring-primary' : ''}`}>
+                                {index === 1 && (
+                                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-primary text-white text-sm font-medium rounded-full">
+                                        Most Popular
+                                    </div>
+                                )}
+                                <div class="flex items-center mb-6">
+                                    <div class="flex items-center justify-center w-14 h-14 rounded-full bg-primary/10 dark:bg-primary/20">
+                                        <Icon name={option.icon} class="w-7 h-7 text-primary" />
+                                    </div>
+                                    <div class="ml-4">
+                                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">{option.type}</h3>
+                                        <p class="text-sm text-gray-500">{option.approval}</p>
+                                    </div>
+                                </div>
+                                <div class="space-y-4">
+                                    <div>
+                                        <p class="text-sm text-gray-500 dark:text-gray-400">Credit Limit</p>
+                                        <p class="font-semibold text-gray-900 dark:text-white">{option.limit}</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm text-gray-500 dark:text-gray-400">Key Features</p>
+                                        <ul class="mt-2 space-y-2">
+                                            {option.features.map(feature => (
+                                                <li class="flex items-center gap-2">
+                                                    <Icon name="check-circle" class="w-5 h-5 text-primary" />
+                                                    <span class="text-gray-600 dark:text-gray-300">{feature}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                    <div class="pt-4 border-t border-gray-200 dark:border-gray-700">
+                                        <p class="text-sm text-gray-500 dark:text-gray-400">Ideal For</p>
+                                        <p class="font-semibold text-gray-900 dark:text-white">{option.bestFor}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Features Section */}
+                <div class="mt-32">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                            Key Features
+                        </h2>
+                        <p class="text-lg text-gray-600 dark:text-gray-300">
+                            What makes our credit solutions stand out
+                        </p>
+                    </div>
+                    <div class="grid gap-8 md:grid-cols-3">
+                        {features.map(feature => (
+                            <div class="relative flex flex-col p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-xl border-2 border-yellow-300/30 dark:border-yellow-300/20">
+                                <div class="flex items-center mb-4">
+                                    <div class="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 dark:bg-primary/20">
+                                        <Icon name={feature.icon} class="w-6 h-6 text-primary" />
+                                    </div>
+                                    <h3 class="ml-4 text-xl font-semibold text-gray-900 dark:text-white">{feature.title}</h3>
+                                </div>
+                                <p class="text-gray-600 dark:text-gray-300">{feature.description}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Steps Section */}
+                <div class="mt-32">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                            How it works?
+                        </h2>
+                        <p class="text-lg text-gray-600 dark:text-gray-300">
+                            Get started with our credit solutions in three simple steps
+                        </p>
+                    </div>
+                    <div class="grid gap-8 md:grid-cols-3">
+                        {steps.map(step => (
+                            <div class="relative flex flex-col items-center text-center p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-xl border-2 border-yellow-300/30 dark:border-yellow-300/20">
+                                <div class="flex items-center justify-center w-12 h-12 rounded-full bg-primary text-white font-bold mb-4">
+                                    {step.number}
+                                </div>
+                                <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">{step.title}</h3>
+                                <p class="text-gray-600 dark:text-gray-300">{step.description}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* CTA Section */}
+                <div class="mt-32 mb-20">
+                    <div class="relative rounded-2xl border-2 border-yellow-300 shadow-[0_0_15px_rgba(253,224,71,0.3)] dark:border-yellow-200 dark:shadow-[0_0_15px_rgba(253,224,71,0.15)] p-8 sm:p-12">
+                        <div class="max-w-3xl mx-auto text-center">
+                            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">Ready to fund your next project?</h2>
+                            <p class="text-xl text-gray-600 dark:text-gray-300 mb-8">
+                                Get the financial flexibility you need to take on more projects and grow your business.
+                            </p>
+                            <button 
+                                onclick="openLeadForm()"
+                                class="inline-flex h-12 items-center justify-center px-8 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 relative"
+                            >
+                                <span class="relative text-base font-semibold text-gray-900 dark:text-white">Apply Now</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </Container>
+    </div>
+</Layout>
+
+<style>
+    .neon-border {
+        border: 2px solid #facc15;
+        box-shadow: 0 0 15px rgba(253, 224, 71, 0.3);
+    }
+
+    .dark .neon-border {
+        border-color: #fef08a;
+        box-shadow: 0 0 15px rgba(253, 224, 71, 0.15);
+    }
+</style> 

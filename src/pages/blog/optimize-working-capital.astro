@@ -1,0 +1,187 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Container from "../../components/Container.astro";
+import Icon from "../../components/Icon.astro";
+
+const post = {
+    title: "5 Ways to Optimize Your Working Capital",
+    excerpt: "Learn practical strategies to improve your business's cash flow and make the most of your working capital through smart financing solutions.",
+    category: "Finance Tips",
+    author: "Sarah Johnson",
+    authorTitle: "Financial Strategy Consultant",
+    date: "2024-03-10",
+    image: "/images/blog/working-capital.webp",
+    readTime: "5 min read"
+};
+
+const relatedPosts = [
+    {
+        title: "Understanding Sharia-Compliant Business Financing",
+        excerpt: "A comprehensive guide to Sharia-compliant financing options for businesses.",
+        slug: "understanding-sharia-compliant-financing",
+        image: "/images/blog/sharia-finance.webp"
+    },
+    {
+        title: "Success Story: How ABC Construction Scaled Their Operations",
+        excerpt: "Discover how a medium-sized construction company leveraged flexible financing.",
+        slug: "abc-construction-success-story",
+        image: "/images/blog/success-story.webp"
+    }
+];
+---
+
+<Layout title={`${post.title} | Buildnow Blog`}>
+    <div class="relative pt-32 lg:pt-36">
+        <Container>
+            <article class="max-w-4xl mx-auto">
+                {/* Header */}
+                <header class="mb-12">
+                    <div class="mb-3">
+                        <span class="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
+                            {post.category}
+                        </span>
+                    </div>
+                    <h1 class="text-4xl font-bold text-gray-900 dark:text-white md:text-5xl lg:text-6xl mb-6">
+                        {post.title}
+                    </h1>
+                    <div class="flex items-center gap-4 text-gray-600 dark:text-gray-400">
+                        <div class="flex items-center gap-2">
+                            <Icon name="user" class="w-5 h-5" />
+                            <span>{post.author}</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <Icon name="calendar" class="w-5 h-5" />
+                            <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <Icon name="clock" class="w-5 h-5" />
+                            <span>{post.readTime}</span>
+                        </div>
+                    </div>
+                </header>
+
+                {/* Featured Image */}
+                <div class="mb-12">
+                    <img 
+                        src={post.image} 
+                        alt={post.title}
+                        class="w-full rounded-2xl"
+                    />
+                </div>
+
+                {/* Content */}
+                <div class="prose prose-lg dark:prose-invert max-w-none">
+                    <h2>Introduction</h2>
+                    <p>
+                        Working capital is the lifeblood of any business, particularly in sectors like construction and trading where timing of payments and receipts can significantly impact operations. In this article, we'll explore five proven strategies to optimize your working capital and improve your business's financial health.
+                    </p>
+
+                    <h3>1. Leverage Supply Chain Financing</h3>
+                    <p>
+                        Modern supply chain financing solutions offer several advantages:
+                    </p>
+                    <ul>
+                        <li>Extended payment terms without straining supplier relationships</li>
+                        <li>Early payment discounts when cash flow allows</li>
+                        <li>Better visibility into payment schedules</li>
+                        <li>Improved supplier relationships through predictable payments</li>
+                    </ul>
+
+                    <h3>2. Optimize Inventory Management</h3>
+                    <p>
+                        Efficient inventory management is crucial for maintaining healthy working capital levels:
+                    </p>
+                    <ul>
+                        <li>Implement just-in-time inventory systems</li>
+                        <li>Use data analytics to predict demand</li>
+                        <li>Regularly review and adjust stock levels</li>
+                        <li>Consider consignment arrangements for high-value items</li>
+                    </ul>
+
+                    <blockquote>
+                        "The key to working capital optimization isn't just about managing cash – it's about creating a balanced ecosystem where your business can thrive while maintaining strong relationships with suppliers and customers."
+                    </blockquote>
+
+                    <h3>3. Streamline Accounts Receivable</h3>
+                    <p>
+                        Improving your collection process can significantly impact working capital:
+                    </p>
+                    <ul>
+                        <li>Implement clear payment terms and policies</li>
+                        <li>Offer early payment incentives</li>
+                        <li>Use digital invoicing and payment systems</li>
+                        <li>Regular follow-up on overdue payments</li>
+                    </ul>
+
+                    <h3>4. Negotiate Better Payment Terms</h3>
+                    <p>
+                        Working with suppliers to optimize payment terms can help balance cash flow:
+                    </p>
+                    <ul>
+                        <li>Build strong supplier relationships</li>
+                        <li>Consider volume commitments for better terms</li>
+                        <li>Explore dynamic discounting options</li>
+                        <li>Align payment terms with your cash conversion cycle</li>
+                    </ul>
+
+                    <h3>5. Utilize Technology Solutions</h3>
+                    <p>
+                        Modern financial technology can help streamline working capital management:
+                    </p>
+                    <ul>
+                        <li>Implement automated payment systems</li>
+                        <li>Use cash flow forecasting tools</li>
+                        <li>Adopt real-time financial monitoring</li>
+                        <li>Integrate systems for better visibility</li>
+                    </ul>
+
+                    <h2>Conclusion</h2>
+                    <p>
+                        Optimizing working capital is an ongoing process that requires attention to multiple aspects of your business. By implementing these strategies and leveraging modern financing solutions, you can improve your business's financial efficiency and create a stronger foundation for growth.
+                    </p>
+                </div>
+
+                {/* Author Bio */}
+                <div class="mt-12 p-6 bg-gray-50 dark:bg-gray-800/50 rounded-2xl">
+                    <div class="flex items-center gap-4">
+                        <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
+                            <Icon name="user" class="w-8 h-8 text-primary" />
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{post.author}</h3>
+                            <p class="text-gray-600 dark:text-gray-400">{post.authorTitle}</p>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Related Posts */}
+                <div class="mt-16">
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Related Articles</h2>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        {relatedPosts.map(related => (
+                            <a href={`/blog/${related.slug}`} class="group">
+                                <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg">
+                                    <div class="relative aspect-[16/9] overflow-hidden">
+                                        <img 
+                                            src={related.image} 
+                                            alt={related.title}
+                                            class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+                                        />
+                                    </div>
+                                    <div class="p-6">
+                                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-primary transition-colors">
+                                            {related.title}
+                                        </h3>
+                                        <p class="text-gray-600 dark:text-gray-300">
+                                            {related.excerpt}
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        ))}
+                    </div>
+                </div>
+            </article>
+        </Container>
+    </div>
+</Layout> 

@@ -1,0 +1,64 @@
+---
+import Container from "./Container.astro";
+import Icon from "./Icon.astro";
+
+const steps = [
+    {
+        number: "01",
+        title: "Quick Application",
+        description: "Complete our simple online application in minutes. No paperwork needed.",
+        icon: "document-check"
+    },
+    {
+        number: "02",
+        title: "Instant Decision",
+        description: "Get approved instantly with our advanced credit assessment system.",
+        icon: "lightning"
+    },
+    {
+        number: "03",
+        title: "Start Purchasing",
+        description: "Use your credit line immediately with our network of suppliers.",
+        icon: "shopping-cart"
+    }
+];
+---
+
+<div id="how-it-works" class="py-20">
+    <Container>
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                How It Works
+            </h2>
+            <p class="text-lg text-gray-600 dark:text-gray-300">
+                Get started with Buildnow in three simple steps
+            </p>
+        </div>
+
+        <div class="relative">
+            <!-- Connecting line -->
+            <div class="absolute top-1/2 left-0 w-full h-px bg-gray-200 dark:bg-gray-700 -translate-y-1/2 hidden md:block"></div>
+            
+            <div class="grid md:grid-cols-3 gap-12">
+                {steps.map((step, index) => (
+                    <div class="relative flex flex-col items-center text-center">
+                        <div class="w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center text-xl font-bold mb-6 relative z-10">
+                            {step.number}
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">{step.title}</h3>
+                        <p class="text-gray-600 dark:text-gray-300">{step.description}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+
+        <div class="mt-16 text-center">
+            <button 
+                onclick="openLeadForm()"
+                class="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white bg-primary rounded-full hover:bg-primary-dark transition-colors"
+            >
+                Get Started Now
+            </button>
+        </div>
+    </Container>
+</div>

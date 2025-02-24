@@ -1,0 +1,120 @@
+---
+import Icon from "../Icon.astro";
+---
+
+<div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Payment Calculator</h2>
+    
+    <form id="payment-form" class="space-y-6">
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="space-y-2">
+                <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Purchase Amount (SAR)</label>
+                <input 
+                    type="number" 
+                    name="amount" 
+                    class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-transparent"
+                    placeholder="Enter purchase amount"
+                    required
+                />
+            </div>
+            
+            <div class="space-y-2">
+                <label class="text-sm font-medium text-gray-700 dark:text-gray-300">Payment Term (Months)</label>
+                <select 
+                    name="term" 
+                    class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-transparent"
+                    required
+                >
+                    <option value="3">3 months</option>
+                    <option value="6">6 months</option>
+                    <option value="9">9 months</option>
+                    <option value="12">12 months</option>
+                </select>
+            </div>
+        </div>
+
+        <button 
+            type="submit"
+            class="w-full px-8 py-3 bg-primary text-white rounded-lg font-semibold hover:bg-primary-dark transition-colors"
+        >
+            Calculate Payments
+        </button>
+    </form>
+
+    <div id="payment-results" class="mt-8 hidden">
+        <div class="border-t border-gray-200 dark:border-gray-700 pt-8">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Payment Schedule</h3>
+            
+            <div class="grid gap-4">
+                <div class="bg-primary/10 rounded-xl p-6">
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Monthly Payment</p>
+                    <p class="text-2xl font-bold text-primary mt-1" id="monthly-payment">SAR 0</p>
+                </div>
+                
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead>
+                            <tr class="text-left border-b border-gray-200 dark:border-gray-700">
+                                <th class="pb-3 text-sm font-semibold text-gray-600 dark:text-gray-400">Payment</th>
+                                <th class="pb-3 text-sm font-semibold text-gray-600 dark:text-gray-400">Due Date</th>
+                                <th class="pb-3 text-sm font-semibold text-gray-600 dark:text-gray-400">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody id="payment-schedule">
+                            <!-- Payment schedule will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const paymentForm = document.getElementById('payment-form');
+    const paymentResults = document.getElementById('payment-results');
+    const paymentSchedule = document.getElementById('payment-schedule');
+
+    paymentForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const formData = new FormData(e.target);
+        const amount = Number(formData.get('amount'));
+        const term = Number(formData.get('term'));
+        
+        // Calculate monthly payment (simplified)
+        const monthlyPayment = amount / term;
+        
+        // Update monthly payment display
+        document.getElementById('monthly-payment').textContent = 
+            `SAR ${monthlyPayment.toLocaleString(undefined, { maximumFractionDigits: 2 })}`;
+        
+        // Generate payment schedule
+        let scheduleHTML = '';
+        const today = new Date();
+        
+        for (let i = 1; i <= term; i++) {
+            const dueDate = new Date(today.getFullYear(), today.getMonth() + i, today.getDate());
+            scheduleHTML += `
+                <tr class="border-b border-gray-100 dark:border-gray-800">
+                    <td class="py-3 text-gray-900 dark:text-white">Payment ${i}</td>
+                    <td class="py-3 text-gray-600 dark:text-gray-400">
+                        ${dueDate.toLocaleDateString('en-US', { 
+                            year: 'numeric', 
+                            month: 'long', 
+                            day: 'numeric' 
+                        })}
+                    </td>
+                    <td class="py-3 text-gray-900 dark:text-white">
+                        SAR ${monthlyPayment.toLocaleString(undefined, { 
+                            maximumFractionDigits: 2 
+                        })}
+                    </td>
+                </tr>
+            `;
+        }
+        
+        paymentSchedule.innerHTML = scheduleHTML;
+        paymentResults.classList.remove('hidden');
+    });
+</script> 
