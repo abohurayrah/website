@@ -45,3 +45,22 @@ All commands are run from the root of the project, from a terminal:
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+
+# Website Project
+
+## Deployment to GitHub Pages
+
+1. Build the site:
+   ```bash
+   npm run build
+   ```
+
+2. Copy the contents of the `dist` directory to your GitHub Pages repository.
+
+3. Ensure `.nojekyll` file is present in the root of the deployed site.
+
+## Local Development
+
+- Start development server: `npm run dev`
+- Build for production: `npm run build`
+- Preview production build: `npm run preview`
