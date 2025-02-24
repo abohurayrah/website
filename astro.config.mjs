@@ -5,6 +5,6 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   integrations: [tailwind()],
   output: 'static',
-  site: 'https://buildnow.netlify.app',
-  base: '/',
+  site: 'https://abohurayrah.github.io',
+  base: '/website',
 });
