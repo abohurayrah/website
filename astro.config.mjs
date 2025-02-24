@@ -1,13 +1,10 @@
 import { defineConfig } from 'astro/config';
-import tailwindcss from '@tailwindcss/vite';
+import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
-  output : "static",
-
-  vite:{
-    plugins: [
-      tailwindcss()
-    ]
-  }
+  integrations: [tailwind()],
+  output: 'static',
+  site: 'https://buildnow.netlify.app', // Replace with your actual domain
+  base: '/',
 });

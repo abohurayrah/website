@@ -18,8 +18,13 @@ export default {
           800: '#854d0e',
           900: '#713f12',
         }
-      }
+      },
+      fontFamily: {
+        urbanist: ['Urbanist', 'sans-serif'],
+      },
     }
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 } 
